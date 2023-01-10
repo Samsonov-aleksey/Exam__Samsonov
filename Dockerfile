@@ -8,7 +8,7 @@ RUN apt install libqt5sql5-psql -y
 RUN apt install build-essential -y
 RUN apt-get install postgresql -y
 COPY . /home/server
-WORKDIR /home/server
+WORKDIR /home/server/server_good
 RUN rm -f *moc
 RUN rm -f Makefile
 RUN qmake server111.pro
