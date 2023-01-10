@@ -14,7 +14,7 @@ public:
 private slots:
     void initTestCase();
     void cleanupTestCase();
-    void openDataBase();
+    void open_db();
 };
 
 testmed::testmed()
@@ -33,7 +33,7 @@ void testmed::cleanupTestCase()
 {
 }
 
-void testmed::openDataBase()
+void testmed::open_db()
 {
     bool result = openDataBase();
     QVERIFY(true == result);
