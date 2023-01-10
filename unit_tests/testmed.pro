@@ -10,8 +10,7 @@ TEMPLATE = app
 
 SOURCES += \
     tst_testmed.cpp \
-    database.cpp \
-    functions.cpp
+    database.cpp 
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -19,5 +18,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    database.h \
-    functions.h
+    database.h 
