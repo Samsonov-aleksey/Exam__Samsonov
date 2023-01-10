@@ -1,5 +1,4 @@
 #include <QtTest>
-#include "functions.h"
 #include "database.h"
 
 
