@@ -25,12 +25,12 @@ bool DataBase::openDataBase()
     if (db.open())
     {
         qInfo()<<"db is open";
-        return true;
+        return 1;
     }
     else
     {
         qCritical()<<"db not open";
-        return false;
+        return 0;
     }
 }
 
