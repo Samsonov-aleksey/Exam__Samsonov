@@ -36,7 +36,7 @@ void testmed::cleanupTestCase()
 void testmed::openDataBase()
 {
     QString result = openDataBase();
-	QVERIFY(true == result);
+    QVERIFY(true == result);
 }
 
 QTEST_APPLESS_MAIN(testmed)
