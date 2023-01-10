@@ -1,7 +1,6 @@
 #include <QtTest>
 #include "database.h"
 
-
 class testmed : public QObject
 {
     Q_OBJECT
@@ -11,7 +10,7 @@ public:
     ~testmed();
     DataBase * m_cntrlBD;
     
-public slots:
+private slots:
     void initTestCase();
     void cleanupTestCase();
     void open_db();    
