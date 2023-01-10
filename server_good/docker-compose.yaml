@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  database: 
+    container_name: psql_local
+    hostname: db_med
+    ports:
+      - 5432:5432
+    image: postgres
+    volumes:
+      - ./volume/data:/var/lib/postgresql/data
+
+    environment:
+      - POSTGRES_DB=photolife
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345678
+    restart: always
+  server:
+    container_name: server
+    hostname: server
+    image: server_local
+    ports:
+      - 33333:33333
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+    build:
+      context: ~/untitled9
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - database
+  grafana:
+    image: grafana/grafana:5.1.0
+    volumes:
+ #     - ./grafana/config.ini:/etc/grafana/grafana.ini
+      - ./grafana/datasource.yaml:/etc/grafana/provisioning/datasources/default.yaml
+      - ./grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/default.yaml
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - 9090:9090
+    volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+volumes:
+  dbdata:
+  prometheus-data:
+    driver: local
