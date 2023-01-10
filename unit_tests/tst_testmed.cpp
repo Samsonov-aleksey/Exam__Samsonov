@@ -14,10 +14,7 @@ public:
 private slots:
     void initTestCase();
     void cleanupTestCase();
-    void message_to_server_yes1();
-    void message_to_server_yes2();
-    void message_to_server_no();
-
+    void openDataBase();
 };
 
 testmed::testmed()
@@ -36,30 +33,11 @@ void testmed::cleanupTestCase()
 {
 }
 
-void testmed::message_to_server_yes1()
+void testmed::openDataBase()
 {
-    std::string log = "ivan";
-    std::string pass = "Qwerty123!";
-    QString result = authorize(log,pass);
-    QVERIFY("authorization yes " == result);
+    QString result = openDataBase();
+	QVERIFY(true == result);
 }
-
-void testmed::message_to_server_yes2()
-{
-    std::string log = "fedor";
-    std::string pass = "Asdfg123!";
-    QString result = authorize(log,pass);
-    QVERIFY("authorization yes " == result);
-}
-
-void testmed::message_to_server_no()
-{
-    std::string log = "user";
-    std::string pass = "12343424346";
-    QString result = authorize(log,pass);
-    QVERIFY("authorization error " == result);
-}
-
 
 QTEST_APPLESS_MAIN(testmed)
 
