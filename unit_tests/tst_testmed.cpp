@@ -18,10 +18,12 @@ private slots:
 
 testmed::testmed()
 {
+    m_cntrlBD = new DataBase;
 }
 
 testmed::~testmed()
 {
+    delete m_cntrlBD;
 }
 
 void testmed::initTestCase()
@@ -34,8 +36,7 @@ void testmed::cleanupTestCase()
 
 void testmed::open_db()
 {
-    bool result = openDataBase();
-    QVERIFY(true == result);
+    QVERIFY(m_cntrlBD->openDataBase() == 1);
 }
 
 QTEST_APPLESS_MAIN(testmed)
