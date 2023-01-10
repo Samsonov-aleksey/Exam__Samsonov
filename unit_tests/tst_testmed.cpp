@@ -9,11 +9,12 @@ class testmed : public QObject
 public:
     testmed();
     ~testmed();
-
-private slots:
+    DataBase * m_cntrlBD;
+    
+public slots:
     void initTestCase();
     void cleanupTestCase();
-    void open_db();
+    void open_db();    
 };
 
 testmed::testmed()
